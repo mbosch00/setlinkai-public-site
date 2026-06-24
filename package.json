@@ -1,0 +1,10 @@
+{
+  "name": "setlinkai-public-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public SetLinkAI landing page with direct early access email routing through a Netlify Function.",
+  "dependencies": {
+    "resend": "^4.0.0"
+  },
+  "devDependencies": {}
+}
