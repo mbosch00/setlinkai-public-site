@@ -9,7 +9,7 @@
 
 <!-- ============================================================
   PUBLIC WEBSITE ONLY
-  This page is intentionally informational and request-based.
+  This page is informational and subscription-enabled for paid plans.
   Do not expose private app URLs, owner dashboard tools, portal generators,
   client link generators, workout generator logic, billing admin controls,
   localStorage app logic, or private trainer/client data here.
@@ -17,7 +17,8 @@
   PLACEHOLDERS TO REPLACE BEFORE GOING LIVE
   - max.bosch00@gmail.com .................... support address (mailto)
   - Footer legal pages: terms.html / privacy.html / refund.html / cancellation.html
-  - Netlify Forms notifications should be enabled for the early-access form.
+  - Paid plan buttons route to Stripe checkout links.
+  - Early-access form routes through Netlify Function + Resend email alerts.
 ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -536,7 +537,7 @@ footer.site .tagline{color:var(--muted2);font-size:13.5px;max-width:36ch}
     <div class="shead center reveal">
       <span class="eyebrow">Pricing</span>
       <h2>Plans that scale with your roster</h2>
-      <p class="lead" style="margin-left:auto;margin-right:auto">Choose the access level that fits your coaching model. SetLinkAI is currently onboarding trainers and direct clients by request so the right workspace and subscription flow can be created.</p>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Choose the access level that fits your coaching model. Paid plans open a secure Stripe checkout. Free Trial access remains request-based so the correct test workspace can be created.</p>
     </div>
 
     <div class="reveal">
@@ -552,20 +553,20 @@ footer.site .tagline{color:var(--muted2);font-size:13.5px;max-width:36ch}
           <div class="pname">Trainer</div>
           <div class="price">$35<small>/month</small></div>
           <div class="cap">Up to 10 clients. For independent trainers getting started.</div>
-          <a class="btn block sm plan-request" href="#early-access" data-plan="Trainer Subscription">Request Trainer Plan</a>
+          <a class="btn block sm" href="https://buy.stripe.com/aFacN73V82FK1N76X8eEo05" target="_blank" rel="noopener noreferrer">Subscribe Trainer</a>
         </div>
         <div class="glass plan feature">
           <span class="badge">Most popular</span>
           <div class="pname">Pro Trainer</div>
           <div class="price">$50<small>/month</small></div>
           <div class="cap">Up to 20 clients. For growing coaching businesses.</div>
-          <a class="btn primary block sm plan-request" href="#early-access" data-plan="Pro Trainer Subscription">Request Pro Trainer</a>
+          <a class="btn primary block sm" href="https://buy.stripe.com/aFadRbbnA9488bvbdoeEo06" target="_blank" rel="noopener noreferrer">Subscribe Pro Trainer</a>
         </div>
         <div class="glass plan">
           <div class="pname">Max Trainer</div>
           <div class="price">$65<small>/month</small></div>
           <div class="cap">Unlimited clients. For full-time coaches and small studios.</div>
-          <a class="btn block sm plan-request" href="#early-access" data-plan="Max Trainer Subscription">Request Max Trainer</a>
+          <a class="btn block sm" href="https://buy.stripe.com/9B600lajw1BG2Rb3KWeEo03" target="_blank" rel="noopener noreferrer">Subscribe Max Trainer</a>
         </div>
       </div>
     </div>
@@ -577,13 +578,13 @@ footer.site .tagline{color:var(--muted2);font-size:13.5px;max-width:36ch}
           <div class="pname">Interactive Client Plan</div>
           <div class="price">$20<small>/client / month</small></div>
           <div class="cap">An interactive plan a client follows on their own private link.</div>
-          <a class="btn block sm plan-request" href="#early-access" data-plan="Interactive Client Plan">Request Interactive Plan</a>
+          <a class="btn block sm" href="https://buy.stripe.com/5kQ5kFajw8043Vfa9keEo02" target="_blank" rel="noopener noreferrer">Subscribe Interactive Plan</a>
         </div>
         <div class="glass plan feature">
           <div class="pname">Daily Accountability Plan</div>
           <div class="price">$45<small>/client / month</small></div>
           <div class="cap">Interactive plan plus ongoing daily accountability and follow-ups.</div>
-          <a class="btn primary block sm plan-request" href="#early-access" data-plan="Daily Accountability Client Plan">Request Accountability Plan</a>
+          <a class="btn primary block sm" href="https://buy.stripe.com/28EfZj3V85RWcrL6X8eEo01" target="_blank" rel="noopener noreferrer">Subscribe Accountability Plan</a>
         </div>
       </div>
     </div>
@@ -601,7 +602,7 @@ footer.site .tagline{color:var(--muted2);font-size:13.5px;max-width:36ch}
     </div>
 
     <div class="glass accessCard reveal">
-      <p class="accessIntro">Use this form to request access, ask about a plan, or get notified when your workspace is ready. This keeps the private owner dashboard, trainer portals, and client generators protected while we route each signup correctly.</p>
+      <p class="accessIntro">Use this form to request the Free Trial, ask about a plan, or get help before subscribing. Paid subscriptions can be started directly from the pricing section through secure Stripe checkout.</p>
       <form class="accessForm" id="earlyAccessForm" autocomplete="on">
         <p style="display:none;">
           <label>Do not fill this out: <input name="bot_field" tabindex="-1" autocomplete="off" /></label>
@@ -656,7 +657,7 @@ footer.site .tagline{color:var(--muted2);font-size:13.5px;max-width:36ch}
 
         <div class="formActions">
           <button type="submit" class="btn primary">Submit Request</button>
-          <p class="mini">You are requesting access only. This form does not open the private app, owner dashboard, trainer portal, or client generators.</p>
+          <p class="mini">This form does not open the private app, owner dashboard, trainer portal, or client generators. Paid plan access is handled after Stripe subscription and onboarding review.</p>
         </div>
         <div id="formStatus" class="formStatus" role="status" aria-live="polite"></div>
       </form>
@@ -682,7 +683,7 @@ footer.site .tagline{color:var(--muted2);font-size:13.5px;max-width:36ch}
       </details>
       <details class="glass qa">
         <summary>How does the Free Trial work?<span class="pm">+</span></summary>
-        <div class="ans">The Free Trial is request-based. Submit the early access form and SetLinkAI will follow up with next steps for testing the one-client trial flow.</div>
+        <div class="ans">The Free Trial is request-based. Submit the early access form and SetLinkAI will follow up with next steps for testing the one-client trial flow. Paid plans can be subscribed to directly through secure Stripe checkout.</div>
       </details>
       <details class="glass qa">
         <summary>What's the difference between trainer plans and direct client plans?<span class="pm">+</span></summary>
