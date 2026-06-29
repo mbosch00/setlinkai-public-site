@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#070A18" />
+<title>SetLink — Simple Easy Tool for Trainers and Clients</title>
+<meta name="description" content="SetLink is the Simple Easy Tool for trainers to build workouts, send client links, track progress, and request billing or early access." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#070A18;--navy2:#0B1026;--card:rgba(255,255,255,.055);--card2:rgba(255,255,255,.028);
+  --line:rgba(170,188,255,.16);--line2:rgba(170,188,255,.26);--ink:#ECF3FF;--muted:#9EABD1;--muted2:#6E7AA0;
+  --teal:#2BE7D8;--purple:#9B6BFF;--disp:'Barlow Condensed',system-ui,sans-serif;--body:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html{scroll-behavior:smooth}html,body{margin:0;padding:0}
+body{font-family:var(--body);background:var(--navy);color:var(--ink);line-height:1.45;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(850px 520px at 10% -8%,rgba(155,107,255,.23),transparent 62%),radial-gradient(780px 500px at 98% 0%,rgba(43,231,216,.16),transparent 60%),var(--navy)}
+body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.34;background-image:linear-gradient(rgba(170,188,255,.042) 1px,transparent 1px),linear-gradient(90deg,rgba(170,188,255,.042) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(circle at 50% 12%,#000,transparent 72%)}
+a{color:inherit;text-decoration:none}.wrap{width:min(1040px,calc(100% - 38px));margin:0 auto}.glass{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:24px;box-shadow:0 24px 70px rgba(2,4,14,.42);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav{position:sticky;top:0;z-index:30;background:rgba(7,10,24,.74);border-bottom:1px solid var(--line);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px)}
+.nav .wrap{height:62px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-size:23px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.brand .set{color:var(--teal)}.mark{width:31px;height:31px;border-radius:10px;background:conic-gradient(from 210deg,var(--teal),var(--purple),var(--teal));position:relative;box-shadow:0 0 24px rgba(43,231,216,.25)}.mark:after{content:"";position:absolute;inset:6px;border-radius:6px;background:var(--navy)}
+.navRight{display:flex;gap:10px;align-items:center}.miniNav{display:flex;gap:20px;color:var(--muted);font-size:14px}.miniNav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line2);border-radius:14px;padding:13px 20px;background:rgba(255,255,255,.045);font-family:var(--disp);font-size:16px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink);cursor:pointer;transition:.18s ease}.btn:hover{transform:translateY(-1px);border-color:var(--teal)}.btn.primary{border:0;color:#06120F;background:linear-gradient(120deg,var(--teal),#5FE0FF 55%,var(--purple));box-shadow:0 12px 34px rgba(43,231,216,.25)}.btn.sm{font-size:14px;padding:10px 15px;border-radius:12px}.btn.block{width:100%}
+h1,h2,h3{font-family:var(--disp);text-transform:uppercase;line-height:.96;letter-spacing:.01em;margin:0}.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal)}.eyebrow:before{content:"";width:28px;height:1px;background:linear-gradient(90deg,var(--teal),transparent)}.lead{color:var(--muted);font-size:18px;max-width:58ch}.glow{background:linear-gradient(110deg,var(--teal),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:48px 0}.hero{min-height:calc(100vh - 62px);display:flex;align-items:center}.heroGrid{display:grid;grid-template-columns:1.08fr .92fr;gap:28px;align-items:center}.hero h1{font-size:clamp(44px,7.5vw,88px);margin:15px 0 16px}.heroBtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pill{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:999px;padding:9px 12px;color:var(--muted);font-size:13px}.pill b{color:var(--ink)}
+.promise{padding:24px}.promiseTitle{font-family:var(--disp);font-size:18px;text-transform:uppercase;letter-spacing:.09em;color:var(--teal);margin-bottom:16px}.setRows{display:grid;gap:11px}.setRow{display:grid;grid-template-columns:48px 1fr;gap:13px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.033)}.letter{height:43px;width:43px;border-radius:15px;display:grid;place-items:center;font-family:var(--disp);font-size:27px;font-weight:700;color:#071018;background:linear-gradient(120deg,var(--teal),var(--purple))}.setRow b{font-family:var(--disp);font-size:23px;text-transform:uppercase}.setRow span{display:block;color:var(--muted);font-size:13px;margin-top:2px}.flow{margin-top:14px;padding:14px;border-radius:17px;background:rgba(43,231,216,.07);border:1px solid rgba(43,231,216,.2);font-size:14px;color:var(--ink)}.flow b{color:var(--teal);font-family:var(--disp);letter-spacing:.06em;text-transform:uppercase}
+.access{padding-top:28px}.accessHeader{text-align:center;max-width:690px;margin:0 auto 22px}.accessHeader h2{font-size:clamp(34px,4.8vw,54px);margin:12px 0 10px}.accessGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;align-items:start}.plans,.formCard{padding:20px}.planList{display:grid;gap:9px}.label{font-family:var(--disp);text-transform:uppercase;letter-spacing:.1em;color:var(--teal);font-size:13px;font-weight:700;margin:15px 0 9px}.label:first-child{margin-top:0}.plan{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:13px 14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.032);cursor:pointer}.plan:hover{border-color:rgba(43,231,216,.38)}.plan.feature{border-color:rgba(43,231,216,.38);background:rgba(43,231,216,.06)}.planName{font-weight:700}.planDesc{display:block;color:var(--muted2);font-size:12px;margin-top:1px}.price{font-family:var(--disp);font-size:25px;font-weight:700;white-space:nowrap}.price small{font-family:var(--body);font-size:12px;color:var(--muted);font-weight:500}.note{font-size:12.5px;color:var(--muted2);margin:12px 0 0}
+.formTitle{font-family:var(--disp);font-size:27px;text-transform:uppercase;margin:0 0 4px}.accessForm{display:grid;gap:12px;margin-top:14px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:11px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-family:var(--disp);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}.field input,.field select,.field textarea{width:100%;background:rgba(7,10,24,.66);border:1px solid var(--line2);border-radius:13px;color:var(--ink);padding:12px 13px;font:14px var(--body);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(43,231,216,.12)}.field select option{background:#0B1026;color:var(--ink)}.field textarea{min-height:78px;resize:vertical}.footer{padding:24px 0 32px;border-top:1px solid var(--line);color:var(--muted2);font-size:13px}.footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer a{color:var(--muted)}.footer a:hover{color:var(--ink)}
+@media(max-width:900px){.hero{min-height:auto}.heroGrid,.accessGrid{grid-template-columns:1fr}.promise{order:-1}.miniNav{display:none}section{padding:38px 0}.hero h1{font-size:50px}}
+@media(max-width:620px){.wrap{width:min(100% - 28px,1040px)}.grid2{grid-template-columns:1fr}.nav .wrap{height:60px}.brand{font-size:20px}.navRight .btn{padding:9px 12px}.hero h1{font-size:42px}.lead{font-size:16px}.plan{grid-template-columns:1fr}.price{font-size:29px}.setRow{grid-template-columns:44px 1fr}.letter{height:40px;width:40px}.footer .wrap{display:block}.footer a{display:inline-block;margin-top:10px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark"></span><span><span class="set">Set</span>Link</span></a>
+    <div class="navRight">
+      <div class="miniNav"><a href="#top">Simple</a><a href="#access">Access</a></div>
+      <a class="btn sm primary" href="#access">Request Access</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="wrap heroGrid">
+    <div>
+      <span class="eyebrow">Simple trainer-client tool</span>
+      <h1>Build workouts. Send one link. <span class="glow">Track progress.</span></h1>
+      <p class="lead">SetLink is the Simple Easy Tool for trainers and clients. Trainers create the plan. Clients open one private link. No complicated client app.</p>
+      <div class="heroBtns">
+        <a class="btn primary" href="#access">Request Access</a>
+        <a class="btn" href="#access">See Plans</a>
+      </div>
+      <div class="pills">
+        <span class="pill"><b>S</b>imple setup</span>
+        <span class="pill"><b>E</b>asy client link</span>
+        <span class="pill"><b>T</b>ool for trainers</span>
+      </div>
+    </div>
+
+    <aside class="glass promise" aria-label="S.E.T. promise">
+      <div class="promiseTitle">The S.E.T. promise</div>
+      <div class="setRows">
+        <div class="setRow"><div class="letter">S</div><div><b>Simple</b><span>Create the workout plan fast.</span></div></div>
+        <div class="setRow"><div class="letter">E</div><div><b>Easy</b><span>Client opens one private link.</span></div></div>
+        <div class="setRow"><div class="letter">T</div><div><b>Tool</b><span>Track completion and follow up.</span></div></div>
+      </div>
+      <div class="flow"><b>Flow:</b> Build → Send → Track.</div>
+    </aside>
+  </div>
+</section>
+
+<section class="access" id="access">
+  <div class="wrap">
+    <div class="accessHeader">
+      <span class="eyebrow">Billing & early access</span>
+      <h2>Pick a plan. Request access.</h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto">SetLink is request-based while trainer testing and billing access are being finalized.</p>
+    </div>
+
+    <div class="accessGrid">
+      <div class="glass plans">
+        <div class="label">Trainer subscriptions</div>
+        <div class="planList">
+          <div class="plan"><div><span class="planName">Basic Trainer Subscription</span><span class="planDesc">Simple trainer workspace.</span></div><div class="price">$35<small>/mo</small></div></div>
+          <div class="plan feature"><div><span class="planName">Pro Trainer Subscription</span><span class="planDesc">For growing client rosters.</span></div><div class="price">$50<small>/mo</small></div></div>
+          <div class="plan"><div><span class="planName">Ultimate Trainer Subscription</span><span class="planDesc">For higher-volume coaching.</span></div><div class="price">$65<small>/mo</small></div></div>
+        </div>
+        <div class="label">Client options</div>
+        <div class="planList">
+          <div class="plan"><div><span class="planName">Workout Plan</span><span class="planDesc">Client workout link and plan.</span></div><div class="price">$20<small>/mo</small></div></div>
+          <div class="plan feature"><div><span class="planName">Accountability Plan</span><span class="planDesc">Plan plus follow-up support.</span></div><div class="price">$45<small>/mo</small></div></div>
+        </div>
+        <p class="note">Trainer-client payments stay external. SetLink billing is for SetLink access only.</p>
+      </div>
+
+      <div class="glass formCard">
+        <h3 class="formTitle">Request access</h3>
+        <p class="note">Submit your info and we will follow up with the right setup.</p>
+        <form class="accessForm" name="early-access" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+          <input type="hidden" name="form-name" value="early-access" />
+          <p style="display:none"><label>Do not fill this out <input name="bot-field" /></label></p>
+          <div class="grid2">
+            <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" placeholder="Your name" required /></div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div>
+            <div class="field"><label for="role">I am a</label><select id="role" name="role" required><option value="">Select one</option><option>Trainer</option><option>Online Coach</option><option>Studio Owner</option><option>Direct Client</option><option>Other</option></select></div>
+            <div class="field"><label for="plan">Plan interest</label><select id="plan" name="plan_interest" required><option value="">Select a plan</option><option>Basic Trainer Subscription</option><option>Pro Trainer Subscription</option><option>Ultimate Trainer Subscription</option><option>Workout Plan</option><option>Accountability Plan</option><option>Not sure yet</option></select></div>
+            <div class="field full"><label for="message">Message optional</label><textarea id="message" name="message" placeholder="Example: I train 8 clients and want to test SetLink."></textarea></div>
+          </div>
+          <button class="btn primary block" type="submit">Request Access</button>
+          <p class="note">Private app links, trainer portals, and billing access are sent after setup.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>All Rights Reserved© SetLink™</span>
+    <span><a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="refund.html">Refund</a> · <a href="cancellation.html">Cancellation</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.querySelectorAll('.plan').forEach(function(card){
+    card.addEventListener('click',function(){
+      var name = card.querySelector('.planName');
+      var select = document.getElementById('plan');
+      var target = document.getElementById('name');
+      if(name && select){ select.value = name.textContent.trim(); }
+      if(target){ target.focus({preventScroll:false}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
